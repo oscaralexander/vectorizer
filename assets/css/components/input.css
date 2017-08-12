@@ -190,6 +190,7 @@
 
 .c-input-inputWithUnit input {
 	border: none;
+	line-height: 16px;
 }
 
 .c-input-inputWithUnit-unit {
