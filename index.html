@@ -19,7 +19,7 @@
         <meta property="og:description" content="Vectorize any image and download as SVG.">
         <meta property="og:url" content="http://vectorizer.oscaralexander.com/">
         <meta property="og:type" content="website"/>
-        <meta property="og:image" content="http://<?= $_SERVER['HTTP_HOST']; ?>/assets/img/opengraph.png">
+        <meta property="og:image" content="http://vectorizer.oscaralexander.com/assets/img/opengraph.png">
         <meta property="og:image:height" content="630">
         <meta property="og:image:width" content="1200">
         <!-- Twitter Card -->
@@ -105,8 +105,8 @@
             $(function () {
                 $('select').customSelect();
 
-                $('.js-inputWithUnit').on('blur focus', function (e) {
-                    $(e.curretTarget).toggleClass('is-focus');
+                $('.js-inputWithUnit').on('blur focus', 'input', function (e) {
+                    $(e.delegateTarget).toggleClass('is-focus');
                 });
             });
         </script>

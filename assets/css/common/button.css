@@ -51,7 +51,7 @@
 .button .spinner {
 	-webkit-animation: spinner 1s linear infinite;
 	        animation: spinner 1s linear infinite;
-	background: transparent url('../img/spinner.png') no-repeat;
+	background: transparent url('../../img/spinner.png') no-repeat;
 	background-size: 24px 24px;
 	display: none;
 	height: 24px;
