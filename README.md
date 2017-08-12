@@ -16,4 +16,4 @@ The UI provides a few parameters for rendering.
 Tested in Chrome, Safari and Firefox, where Safari proved rougly 300% faster than Chrome, and 100% faster than Firefox.
 
 ### Disclaimer
-This tool wasn't designed to be public-facing so please bear with any quirks and lack of better documentation. Hope you'll have some fun with it regardless!
+This tool wasn't designed to be public-facing so please bear with any quirks, rough edges and lack of better documentation. Hope you'll have some fun with it regardless!
