@@ -41,7 +41,7 @@ var vectorizer = {
         this.$inputReset.addEventListener('click', this.onInputReset.bind(this));
     },
 
-    getBlockDensity: function (data) {
+    getBlockBrightness: function (data) {
         var count;
         var i;
         var length;
@@ -66,7 +66,7 @@ var vectorizer = {
         // Get white value
         white =  ~~((rgb.r + rgb.g + rgb.b) / 3);
 
-        // Return density
+        // Return brightness
         return white / 255;
     },
 
@@ -145,34 +145,34 @@ var vectorizer = {
         fileReader.readAsDataURL(file);
     },
 
-    render: function (x, y, density) {
+    render: function (x, y, brightness) {
         switch (this.$inputStyle.value) {
             case 'dots':
-                this.renderDot(x, y, density);
+                this.renderDot(x, y, brightness);
                 break;
 
             case 'lines':
-                this.renderLine(x, y, density);
+                this.renderLine(x, y, brightness);
                 break;
 
             case 'squares':
-                this.renderSquare(x, y, density);
+                this.renderSquare(x, y, brightness);
                 break;
         }
     },
 
-    renderDot: function (x, y, density) {
+    renderDot: function (x, y, brightness) {
         var diameter;
 
-        diameter = this.weight * density;
+        diameter = this.weight * brightness;
         offset = (this.blockSize - diameter) * 0.5;
         this.svg.circle(diameter).fill(this.colorFg).move(x + offset, y + offset);
     },
 
-    renderLine: function (x, y, density) {
+    renderLine: function (x, y, brightness) {
         var width;
 
-        width = density * this.weight;
+        width = brightness * this.weight;
 
         // Draw line with a minor overlap to avoid rendering gaps
         this.svg.line(-0.5, (this.blockSize + 0.5), (this.blockSize + 0.5), -0.5).move(x, y).stroke({
@@ -181,11 +181,11 @@ var vectorizer = {
         });
     },
 
-    renderSquare: function (x, y, density) {
+    renderSquare: function (x, y, brightness) {
         this.svg.rect(this.blockSize, this.blockSize).attr({fill: this.colorFg})
             .move(x, y)
-            .transform({rotation: (45 * density)})
-            .transform({scale: density + 0.1});
+            .transform({rotation: (45 * brightness)})
+            .transform({scale: brightness + 0.1});
     },
 
     run: function () {
@@ -193,7 +193,7 @@ var vectorizer = {
         var blocks;
         var cols;
         var data;
-        var density;
+        var brightness;
         var rows;
         var x;
         var y;
@@ -225,6 +225,8 @@ var vectorizer = {
 
         // Set a small timeout so the UI update gets painted
         setTimeout(function () {
+            console.time('render');
+
             for (row = 0; row < rows; row++) {
                 for (col = 0; col < cols; col++) {
                     x = col * this.blockSize;
@@ -233,16 +235,19 @@ var vectorizer = {
                     // Get pixel color values for grid block
                     data = this.ctx.getImageData(x, y, this.blockSize, this.blockSize).data;
 
-                    // Calculate grid block color density (between 0 and 1)
-                    density = this.getBlockDensity(data);
+                    // Calculate grid block color brightness (between 0 and 1)
+                    brightness = this.getBlockBrightness(data);
 
                     // Render shape for grid bock
-                    this.render(x, y, density);
+                    this.render(x, y, brightness);
 
                     // Display progress to console
                     console.log('Processing: ' + Math.round((++block / blocks) * 100) + '%');
                 }
             }
+
+            // Log processing time
+            console.timeEnd('render');
 
             // Update UI
             this.$input.classList.remove('is-busy');
