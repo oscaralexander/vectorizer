@@ -164,7 +164,7 @@ var vectorizer = {
     renderDot: function (x, y, brightness) {
         var diameter;
 
-        diameter = this.weight * brightness;
+        diameter = brightness * (this.blockSize * this.weight);
         offset = (this.blockSize - diameter) * 0.5;
         this.svg.circle(diameter).fill(this.colorFg).move(x + offset, y + offset);
     },
@@ -172,7 +172,7 @@ var vectorizer = {
     renderLine: function (x, y, brightness) {
         var width;
 
-        width = brightness * this.weight;
+        width = brightness * (this.blockSize * this.weight);
 
         // Draw line with a minor overlap to avoid rendering gaps
         this.svg.line(-0.5, (this.blockSize + 0.5), (this.blockSize + 0.5), -0.5).move(x, y).stroke({
@@ -202,7 +202,7 @@ var vectorizer = {
         this.colorBg = '#' + this.$inputColorBg.value.replace('#', '');
         this.colorFg = '#' + this.$inputColorFg.value.replace('#', '');
         this.blockSize = Math.abs(parseInt(this.$inputBlockSize.value, 10));
-        this.weight = Math.abs(parseInt(this.$inputWeight.value, 10));
+        this.weight = Math.abs(parseFloat(this.$inputWeight.value));
 
         // Calculate grid colums and rows
         cols = Math.floor(this.img.width / this.blockSize);
