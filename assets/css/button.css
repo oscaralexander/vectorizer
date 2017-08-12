@@ -9,8 +9,8 @@
 }
 
 .button {
-	-webkit-appearance: none;
-	        appearance: none;
+//	-webkit-appearance: none;
+//	        appearance: none;
 	background: #444;
 	border: none;
 	border-radius: 3px;
@@ -21,8 +21,9 @@
 	font-weight: 700;
 	height: 40px;
 	display: block;
-	line-height: 36px;
+	line-height: 40px;
 	outline: none;
+	padding: 0;
 	position: relative;
 	text-align: center;
 }
@@ -39,6 +40,7 @@
 	position: absolute;
 	top: 0;
 	width: 100%;
+	z-index: 9999;
 }
 
 .button span {

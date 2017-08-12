@@ -172,10 +172,8 @@
 	display: flex;
 	border: 2px solid #444;
 	border-radius: 3px;
-	max-width: 100%;
 	-webkit-transition: all 150ms ease;
 	transition: all 150ms ease;
-	width: 100%;
 }
 
 .c-input-inputWithUnit:hover {
@@ -186,16 +184,17 @@
 	border-color: #FFF;
 }
 
+.c-input-inputWithUnit div {
+	flex: 1 1 auto;
+}
+
 .c-input-inputWithUnit input {
 	border: none;
-	flex: 1 1 75%;
-	padding: 6px 8px;
 }
 
 .c-input-inputWithUnit-unit {
 	background: #222;
 	color: #999;
-	flex: 1 1 25%;
 	font-family: 'Roboto Mono', monospace;
 	font-size: 12px;
 	letter-spacing: 0.05em;
