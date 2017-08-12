@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+        <meta content="initial-scale=1,width=device-width" name="viewport">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <title>Vectorizer &mdash; Oscar Alexander</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        <!-- Meta -->
+        <meta name="description" content="Vectorize any image and download as SVG.">
+        <meta itemprop="name" content="Vectorizer — Oscar Alexander">
+        <meta itemprop="url" content="http://<?= $_SERVER['HTTP_HOST']; ?>/">
+        <meta itemprop="image" content="http://<?= $_SERVER['HTTP_HOST']; ?>/assets/img/opengraph.png">
+        <!-- OpenGraph -->
+        <meta property="og:site_name" content="Vectorizer — Oscar Alexander">
+        <meta property="og:title" content="Vectorizer — Oscar Alexander">
+        <meta property="og:description" content="Vectorize any image and download as SVG.">
+        <meta property="og:url" content="http://<?= $_SERVER['HTTP_HOST']; ?>/">
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="http://<?= $_SERVER['HTTP_HOST']; ?>/assets/img/opengraph.png">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:width" content="1200">
+        <!-- Twitter Card -->
+        <meta name="twitter:title" content="Vectorizer — Oscar Alexander">
+        <meta name="twitter:description" content="Vectorize any image and download as SVG.">
+        <meta name="twitter:image" content="http://<?= $_SERVER['HTTP_HOST']; ?>/assets/img/opengraph.png">
+        <meta name="twitter:url" content="http://<?= $_SERVER['HTTP_HOST']; ?>/">
+        <meta name="twitter:card" content="summary">
+    </head>
+    <body>
+        <canvas id="js-canvas"></canvas>
+        <div id="js-output"></div>
+        <div class="c-input" id="js-input">
+            <h1>Vectorizer</h1>
+            <p class="c-input-intro">
+                by <a href="https://twitter.com/oscaralexander" target="_blank">oscaralexander</a>
+                for <a href="https://www.thenextweb.com/" target="_blank">TNW</a>
+                (<a href="#">source</a>)
+            </p>
+            <form action="#" id="js-inputForm" method="post">
+                <div class="c-input-file" id="js-inputFile">
+                    <button class="button block c-input-file-select outline" type="button">
+                        Select image&hellip;
+                        <input id="js-inputFileInput" name="file" type="file">
+                    </button>
+                    <div class="c-input-file-selected">
+                        <span id="js-inputFileName"></span>
+                        <a href="#" id="js-inputReset" type="reset"></a>
+                    </div>
+                </div>
+                <div class="c-input-row">
+                    <div class="c-input-field">
+                        <label for="js-inputStyle">Style</label>
+                        <select id="js-inputStyle" name="style">
+                            <option value="lines">LINES</option>
+                            <option value="dots">DOTS</option>
+                            <option value="squares">SQUARES</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="c-input-row">
+                    <div class="c-input-field">
+                        <label for="js-inputBlockSize" title="Dimensions of the blocks the image will be divided into.">
+                            Block size
+                        </label>
+                        <div>
+                            <div class="c-input-inputWithUnit js-inputWithUnit">
+                                <input id="js-inputBlockSize" type="number" value="16">
+                                <div class="c-input-inputWithUnit-unit">px</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c-input-field">
+                        <label for="js-inputWeight" title="Maximum size of the element occupying a grid block.">
+                            Weight
+                        </label>
+                        <div class="c-input-inputWithUnit js-inputWithUnit">
+                            <input id="js-inputWeight" type="number" value="10">
+                            <div class="c-input-inputWithUnit-unit">px</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-input-row">
+                    <div class="c-input-field">
+                        <label for="js-inputColorBg">Background color</label>
+                        <input id="js-inputColorBg" maxlength="7" type="text" pattern="#[0-9A-F]{3,6}" value="#330066">
+                    </div>
+                    <div class="c-input-field">
+                        <label for="js-inputColorFg">Foreground color</label>
+                        <input id="js-inputColorFg" maxlength="7" type="text" pattern="#[0-9A-F]{3,6}" value="#00CCCC">
+                    </div>
+                </div>
+                <div class="c-input-row">
+                    <div class="c-input-field">
+                        <button class="block button" type="submit">
+                            <span>Process</span>
+                            <i class="spinner"></i>
+                        </button>
+                    </div>
+                    <div class="c-input-field">
+                        <button class="block button c-input-btnExportSvg" href="#" id="js-inputExportSvg">Export SVG</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+        <script src="assets/js/vendor/jquery.custom-select.js"></script>
+        <script src="assets/js/vectorizer.js"></script>
+        <script>
+            $(function () {
+                $('select').customSelect();
+
+                $('.js-inputWithUnit').on('blur focus', function (e) {
+                    $(e.curretTarget).toggleClass('is-focus');
+                });
+            });
+        </script>
+    </body>
+</html>

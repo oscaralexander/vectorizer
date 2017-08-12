@@ -1,0 +1,217 @@
+@keyframes popUp {
+	0% { opacity: 0; transform: translateY(16px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+
+@-webkit-keyframes popUp {
+	0% { opacity: 0; -webkit-transform: translateY(16px); transform: translateY(16px); }
+	100% { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+.c-input {
+	background: #000;
+	bottom: 24px;
+	box-shadow: 0 24px 40px rgba(0, 0, 0, 0.25);
+	left: 24px;
+	max-width: 288px;
+	padding: 32px;
+	position: fixed;
+	width: 288px;
+}
+
+.c-input.is-busy,
+.c-input.is-busy * {
+	cursor: wait;
+	pointer-events: none;
+}
+
+.c-input h1 {
+	color: #FFF;
+	font-size: 24px;
+	font-weight: 400;
+	letter-spacing: 0.015em;
+	margin-bottom: 8px;
+}
+
+.c-input-intro {
+	color: #999;
+	margin-bottom: 32px;
+}
+
+.c-input-intro a {
+	box-shadow: inset 0 -1px 0 #555;
+	color: #999;
+}
+
+.c-input-intro a:hover {
+	box-shadow: inset 0 -1px 0 #FFF;
+	color: #FFF;
+}
+.c-input-file {
+	margin-bottom: 16px;
+}
+
+.c-input.has-file .c-input-file-select {
+	display: none;
+}
+
+.c-input.has-file .c-input-file-selected {
+	display: block;
+}
+
+.c-input-file-select {
+	-webkit-animation: popUp 1s cubic-bezier(0.15, 1.5, 0.35, 1.000);
+	        animation: popUp 1s cubic-bezier(0.15, 1.5, 0.35, 1.000);
+}
+
+.c-input-file-selected {
+	-webkit-animation: popUp 1s cubic-bezier(0.15, 1.5, 0.35, 1.000);
+	        animation: popUp 1s cubic-bezier(0.15, 1.5, 0.35, 1.000);
+	background: #0C6;
+	border-radius: 3px;
+	display: none;
+	font-weight: 700;
+	height: 44px;
+	line-height: 44px;
+	padding: 0 44px 0 12px;
+	position: relative;
+}
+
+.c-input-file-selected span {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+	white-space: nowrap;
+}
+
+.c-input-file-selected a {
+	background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.293 2.707l1.414-1.414L8 6.586l5.293-5.293 1.414 1.414L9.414 8l5.293 5.293-1.414 1.414L8 9.414l-5.293 5.293-1.414-1.414L6.586 8" fill="#FFF" /></svg>');
+	display: block;
+	height: 16px;
+	opacity: 0.5;
+	position: absolute;
+	right: 14px;
+	top: 14px;
+	width: 16px;
+}
+
+.c-input-file-selected a:hover {
+	opacity: 1;
+}
+
+.c-input-row {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	margin: 0 -4px 24px -4px;
+}
+
+.c-input-row::after {
+	clear: both;
+	content: '';
+	display: table;
+}
+
+.c-input-field {
+	flex: 1 1 50%;
+	padding: 0 4px;
+}
+
+.c-input-row label {
+	display: block;
+	font-size: 12px;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.c-input-row label i {
+	background: #333;
+	border-radius: 50%;
+	color: #999;
+	display: block;
+	height: 18px;
+	float: right;
+	font-family: Georgia, serif;
+	font-style: italic;
+	font-weight: 700;
+	text-align: center;
+	width: 18px;
+}
+
+.c-input-row input {
+	appearance: none;
+	background: transparent;
+	border: 2px solid #444;
+	border-radius: 3px;
+	color: #FFF;
+	display: block;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 12px;
+	letter-spacing: 0.05em;
+	line-height: 20px;
+	outline: none;
+	padding: 8px;
+	text-transform: uppercase;
+	-webkit-transition: all 150ms ease;
+	transition: all 150ms ease;
+	width: 100%;
+}
+
+.c-input-row input:hover {
+	border-color: #555;
+}
+
+.c-input-row input:focus {
+	border-color: #FFF;
+}
+
+.c-input-inputWithUnit {
+	display: -webkit-flex;
+	display: flex;
+	border: 2px solid #444;
+	border-radius: 3px;
+	max-width: 100%;
+	-webkit-transition: all 150ms ease;
+	transition: all 150ms ease;
+	width: 100%;
+}
+
+.c-input-inputWithUnit:hover {
+	border-color: #555;
+}
+
+.c-input-inputWithUnit.is-focus {
+	border-color: #FFF;
+}
+
+.c-input-inputWithUnit input {
+	border: none;
+	flex: 1 1 75%;
+	padding: 6px 8px;
+}
+
+.c-input-inputWithUnit-unit {
+	background: #222;
+	color: #999;
+	flex: 1 1 25%;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 12px;
+	letter-spacing: 0.05em;
+	line-height: 36px;
+	padding: 0 8px;
+}
+
+.c-input-btnExportSvg {
+	opacity: 0;
+	pointer-events: none;
+	-webkit-transition: opacity 150ms ease;
+	        transition: opacity 150ms ease;
+	will-change: opacity;
+}
+
+.c-input.is-ready .c-input-btnExportSvg {
+	opacity: 1;
+	pointer-events: all;
+}

@@ -1,0 +1,45 @@
+@charset('utf-8');
+
+@import url('./vendor/reset.css');
+@import url('./button.css');
+/* @import url('./input.css'); */
+@import url('./components/input.css');
+@import url('./vendor/custom-select.css');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	-webkit-transition: background-color 500ms ease;
+	        transition: background-color 500ms ease;
+	background: #306;
+	color: #FFF;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 12px;
+	will-change: background-color;
+}
+
+a {
+	text-decoration: none;
+}
+
+body.is-processing * {
+    cursor: wait !important;
+}
+
+#js-canvas {
+    left: -9999px;
+    position: absolute;
+    visibility: hidden;
+    top: -9999px;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100vw;
+}

@@ -1,0 +1,85 @@
+@keyframes spinner {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spinner {
+	0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(0deg); transform: rotate(360deg); }
+}
+
+.button {
+	-webkit-appearance: none;
+	        appearance: none;
+	background: #444;
+	border: none;
+	border-radius: 3px;
+	color: #FFF;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 700;
+	height: 40px;
+	display: block;
+	line-height: 36px;
+	outline: none;
+	position: relative;
+	text-align: center;
+}
+
+.button:hover {
+	background-color: #555;
+}
+
+.button input[type='file'] {
+	cursor: pointer;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.button span {
+	position: relative;
+	z-index: 2;
+}
+
+.button .spinner {
+	-webkit-animation: spinner 1s linear infinite;
+	        animation: spinner 1s linear infinite;
+	background: transparent url('../img/spinner.png') no-repeat;
+	background-size: 24px 24px;
+	display: none;
+	height: 24px;
+	left: 50%;
+	margin: -12px 0 0 -12px;
+	position: absolute;
+	top: 50%;
+	width: 24px;
+	will-change: transform;
+}
+
+.button.block {
+	display: block;
+	width: 100%;
+}
+
+.button.outline {
+	background: transparent;
+	box-shadow: inset 0 0 0 2px #444;
+}
+
+.button.outline:hover {
+	background: transparent;
+	box-shadow: inset 0 0 0 2px #555;
+}
+
+.is-busy button span {
+	opacity: 0;
+}
+
+.is-busy button .spinner {
+	display: block;
+}
