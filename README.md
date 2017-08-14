@@ -1,4 +1,4 @@
-![Vectorizer](http://vectorizer.oscaralexander.com/assets/img/vectorizer.png)
+![Vectorizer](http://vectorizer.oscaralexander.com/assets/img/vectorizer.png?2)
 
 # Vectorizer
 
